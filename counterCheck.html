@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>{{count}}</h1>
+        <button @click="reduceCounter">-</button>
+
+        <button v-on:click="increaseCounter">+</button>
+
+        <p v-if="isEvenNumber">The Current Count is even</p>
+        <p v-else>The Current Count is odd</p>
+
+
+        <footer id="footer">
+            <p>copyright {{date.getFullYear()}}</p>
+        </footer>
+    </div>
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        //creating new vue instance
+
+        new Vue({
+            el: '#app',
+            data: {
+
+                count: 0,
+                date: new Date()
+            },
+            methods: {
+                reduceCounter: function () {
+
+                    this.count-- //this keywords refers vue instance,
+
+                },
+                increaseCounter: function () {
+                    this.count++
+                }
+            },
+
+            computed: {
+                isEvenNumber() {
+                    return this.count % 2 === 0;
+                }
+            }
+        })
+    </script>
+</body>
+
+
+</html>

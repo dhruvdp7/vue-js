@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app" >
+
+        <input type="text" v-on:input="changeTitle">
+
+        <h2>
+            {{title}}
+
+        </h2>
+        <a v-bind:href="link">Google</a>
+
+        <h1 v-on:mousemove="updateCoordinates">Coordinate : {{x}} / {{y}}</h1>
+
+
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                title: "dhruv",
+                link: "https://www.google.com/",
+                x: 0,
+                y: 0
+
+            },
+            methods: {
+                changeTitle: function (event) {
+                    this.title = event.target.value;
+                },
+                updateCoordinates: function (event) {
+                    this.x = event.clientX;
+                    this.y = event.clientY;
+                }
+
+
+            }
+
+        })
+    </script>
+</body>
+
+</html>
