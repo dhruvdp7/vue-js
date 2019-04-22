@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <div id="app" >
+    <div id="app">
 
         <input type="text" v-on:input="changeTitle">
 
@@ -22,6 +22,15 @@
 
         <h1 v-on:mousemove="updateCoordinates">Coordinate : {{x}} / {{y}}</h1>
 
+        <button type="button" v-on:click="counter++">Increase Counter</button>
+        <button type="button" v-on:click="counter--">Decrease Counter</button>
+        <button type="button" v-on:click="secondcounter++">Second Counter</button>
+
+
+        <p>counter: {{counter}} || {{secondcounter}}</p>
+        <p>result: {{result()}} || {{output}}</p>
+
+
 
     </div>
 
@@ -32,20 +41,51 @@
                 title: "dhruv",
                 link: "https://www.google.com/",
                 x: 0,
-                y: 0
+                y: 0,
+                counter: 0,
+                secondcounter: 0
 
             },
             methods: {
+
+
                 changeTitle: function (event) {
                     this.title = event.target.value;
                 },
                 updateCoordinates: function (event) {
                     this.x = event.clientX;
                     this.y = event.clientY;
+                },
+                result: function () {
+                    console.log('method');
+
+                    // return this.counter > 5 ? 'greater than 5' : 'smaller than 5';
+
+
                 }
 
 
-            }
+
+            },
+
+            computed: {
+                output: function () {
+                    console.log('computed');
+                    // return this.counter > 5 ? 'greater than 5' : 'smaller than 5';
+
+                }
+
+            },
+            watch: {
+                counter:function(value){
+                    var vm=this;
+                    setTimeout(function(){
+                        vm.counter=0;
+                    },2000);
+                    
+
+                }
+            },
 
         })
     </script>

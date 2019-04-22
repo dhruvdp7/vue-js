@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <p v-if="show">You can see me</p>
+        <p>Do u also see me?</p>
+        <button @click="show = !show">Switch</button>
+        <ul>
+            <li v-for="(ingredient,i) in list" >{{ ingredient }} ({{i}})
+
+
+
+            </li>
+        </ul>
+        <hr>
+        <ul>
+            <li v-for="person in persons">
+                <div v-for="(value, key ,index ) in person">{{ key }} :  {{ value }} ({{ index }})</div >
+            </li>
+        </ul>
+        <hr>
+    </div>
+
+
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                show: true,
+                list: ['meat', 'fruit', 'cookies'],
+                persons:[{
+                    name:'dhruv',
+                    age:'12',
+                    gender:'male'
+                },
+                {
+                    name:'uday',
+                    age:'71',
+                    gender:'male'
+                }]
+            }
+        })
+    </script>
+
+</body>
+
+</html>
